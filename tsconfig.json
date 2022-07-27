@@ -13,7 +13,9 @@
     "skipLibCheck": true,
     "paths": {
       "@/*": ["./src/*"],
-      "@core/*":["./src/core/*"]
+      "@core/*":["./src/core/*"],
+      "@infra/*":["./src/infra/*"],
+      "@presentation/*":["./src/presentation/*"]
     },                          
   }
 }

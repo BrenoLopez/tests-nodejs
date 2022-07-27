@@ -1,3 +1,5 @@
+import { errorHandler } from "@infra/middlewares";
+import { routes } from "@infra/routes";
 import cors from "cors";
 import { config } from "dotenv";
 import express, { Request, Response } from "express";
@@ -13,8 +15,10 @@ const app = http2Express(express);
 const PORT = Number(process.env.PORT) || 3333;
 app.use(cors());
 app.use(express.json());
-app.get("/", (_: Request, response: Response) => {
-  return response.send("hello");
+app.use(routes);
+app.use(errorHandler);
+app.use((_: Request, response: Response) => {
+  return response.status(404).send("Página não encontrada! ;-;");
 });
 
 createSecureServer(
