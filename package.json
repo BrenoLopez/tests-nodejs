@@ -8,7 +8,7 @@
     "npm": "8.x"
   },
   "scripts": {
-    "start": "tsc && node ./dist/src/main.js",
+    "start": "tsc && node -r ts-node/register/transpile-only -r tsconfig-paths/register ./dist/src/main.js",
     "start:dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpile-only --exit-child ./src/main.ts",
     "test": "jest",
     "test:watch": "jest --watchAll --collectCoverage",

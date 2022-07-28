@@ -3,10 +3,9 @@ import { routes } from "@infra/routes";
 import cors from "cors";
 import { config } from "dotenv";
 import express, { Request, Response } from "express";
-import { readFileSync } from "fs";
-import { createSecureServer, SecureServerOptions } from "http2";
 import http2Express from "http2-express-bridge";
-import { resolve } from "path";
+import { readFileSync } from "node:fs";
+import { createSecureServer, SecureServerOptions } from "node:http2";
 
 config();
 
@@ -23,8 +22,8 @@ app.use((_: Request, response: Response) => {
 
 createSecureServer(
   {
-    key: readFileSync(resolve(__dirname, "..", "ssl/localhost.key")),
-    cert: readFileSync(resolve(__dirname, "..", "ssl/localhost.crt")),
+    key: readFileSync("ssl/localhost.key"),
+    cert: readFileSync("ssl/localhost.crt"),
     allowHttp1: true,
   } as SecureServerOptions,
   app
